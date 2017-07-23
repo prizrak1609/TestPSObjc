@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RecipeCell : UITableViewCell
-@property(nonatomic, strong) RecipeModel *model;
+- (void)setRecipeModel:(RecipeModel *)model;
 @end
 
 NS_ASSUME_NONNULL_END

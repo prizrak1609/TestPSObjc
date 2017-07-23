@@ -17,28 +17,32 @@
 
 @implementation RecipeCell
 
-- (void)setModel:(RecipeModel *)model {
-    _nameLabel.text = model.title;
-    _decriptionTextView.text = model.ingredients;
+@synthesize nameLabel;
+@synthesize thumbnail;
+@synthesize decriptionTextView;
+
+- (void)setRecipeModel:(RecipeModel *)model {
+    nameLabel.text = model.title;
+    decriptionTextView.text = model.ingredients;
     NSURL *const imageURL = [[NSURL alloc] initWithString:model.thumbnail];
     if(imageURL) {
-        _thumbnail.layer.borderWidth = 1;
-        [_thumbnail setImageWithURL:imageURL];
+        thumbnail.layer.borderWidth = 1;
+        [thumbnail setImageWithURL:imageURL];
     }
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    _thumbnail.layer.borderColor = UIColor.clearColor.CGColor;
-    _thumbnail.image = nil;
+    thumbnail.layer.borderColor = UIColor.clearColor.CGColor;
+    thumbnail.image = nil;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _decriptionTextView.scrollEnabled = NO;
-    _thumbnail.layer.masksToBounds = YES;
-    _thumbnail.layer.borderColor = UIColor.grayColor.CGColor;
-    _thumbnail.layer.cornerRadius = _thumbnail.frame.size.height / 2;
+    decriptionTextView.scrollEnabled = NO;
+    thumbnail.layer.masksToBounds = YES;
+    thumbnail.layer.borderColor = UIColor.grayColor.CGColor;
+    thumbnail.layer.cornerRadius = thumbnail.frame.size.height / 2;
 }
 
 @end

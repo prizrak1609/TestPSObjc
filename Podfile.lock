@@ -1,0 +1,35 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - CRToast (0.0.9)
+  - GDPerformanceView (1.3.1)
+  - IQKeyboardManager (4.0.10)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0)
+  - CRToast (~> 0.0.9)
+  - GDPerformanceView (~> 1.3.1)
+  - IQKeyboardManager
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
+  GDPerformanceView: d70d646bf7022a3dfd64222e4966f403bfffef19
+  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+
+PODFILE CHECKSUM: 64725ff0830f5f89aacdd027dd986e6ed5c7406f
+
+COCOAPODS: 1.2.1

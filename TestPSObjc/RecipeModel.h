@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RecipeModel : NSObject
-@property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *siteURLPath;
-@property(nonatomic, strong) NSString *ingredients;
-@property(nonatomic, strong) NSString *thumbnail;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *siteURLPath;
+@property(nonatomic, copy) NSString *ingredients;
+@property(nonatomic, copy) NSString *thumbnail;
 
 - (instancetype) initFromJSON:(id)JSON;
 @end

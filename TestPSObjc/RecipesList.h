@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RecipesList.h
 //  TestPSObjc
 //
 //  Created by Dima Gubatenko on 22.07.17.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReceipesList : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, ServerDelegate>
+@interface RecipesList : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, ServerDelegate>
 @end
 
 NS_ASSUME_NONNULL_END

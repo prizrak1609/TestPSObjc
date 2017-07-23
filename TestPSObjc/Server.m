@@ -16,17 +16,19 @@
 @end
 
 @implementation Server {
-    Database *database;
-    NSString *baseURLPath;
+    Database *_database;
+    NSString *_baseURLPath;
 }
+
+@synthesize delegate = _delegate;
 
 - (instancetype)initWithDelegate:(id<ServerDelegate>)delegate {
     self = [super init];
     if(self) {
         _delegate = delegate;
-        baseURLPath = @"http://www.recipepuppy.com/api/";
-        database = [Database new];
-        NSError *const error = [database openOrCreate];
+        _baseURLPath = @"http://www.recipepuppy.com/api/";
+        _database = [[Database alloc] init];
+        NSError *const error = [_database openOrCreate];
         if(error) {
             [_delegate errorWithNSError:error];
         }
@@ -34,13 +36,13 @@
     return self;
 }
 
-- (void)searchText:(void (^)(NSArray<RecipeModel *> *models))completion {
+- (void)searchText:(ServerRecipeModelsArrayCompletion)completion {
     [self searchText:@"" completion:completion];
 }
 
-- (void)searchText:(NSString *)text completion:(void (^)(NSArray<RecipeModel *> *models))completion {
+- (void)searchText:(NSString *)text completion:(ServerRecipeModelsArrayCompletion)completion {
     NSError *error;
-    completion([database getAllRecipesWithError:&error]);
+    completion([_database getAllRecipesWithError:&error]);
     if(error) {
         [_delegate errorWithNSError:error];
         return;
@@ -52,7 +54,7 @@
         parameters = @{@"q" : text};
     }
     NSMutableURLRequest *const request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
-                                                                                       URLString:baseURLPath
+                                                                                       URLString:_baseURLPath
                                                                                       parameters:parameters
                                                                                            error:nil];
     __weak typeof(self) const weakSelf = self;
@@ -64,16 +66,16 @@
                                                     [strongSelf.delegate errorWithNSError:error];
                                                 } else {
                                                     NSArray<id> *const resultArray = [responseObject objectForKey:@"results"];
-                                                    NSMutableArray<RecipeModel *> *const result = [NSMutableArray new];
+                                                    NSMutableArray<RecipeModel *> *const result = [[NSMutableArray alloc] init];
                                                     for(id jsonItem in resultArray) {
                                                         RecipeModel *model = [[RecipeModel alloc] initFromJSON:jsonItem];
                                                         [result addObject:model];
                                                     }
-                                                    NSError *error = [database deleteRecipes];
+                                                    NSError *error = [strongSelf->_database deleteRecipes];
                                                     if(error) {
                                                         [strongSelf.delegate errorWithNSError:error];
                                                     }
-                                                    error = [database createRecipes:result];
+                                                    error = [strongSelf->_database createRecipes:result];
                                                     if(error) {
                                                         [strongSelf.delegate errorWithNSError:error];
                                                     }

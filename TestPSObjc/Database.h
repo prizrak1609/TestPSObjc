@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Database : NSObject
 - (nullable NSError *)openOrCreate;
-- (NSArray<RecipeModel *> *)getAllRecipesWithError:(NSError **)error;
+- (NSArray<RecipeModel *> *)getAllRecipesWithError:(NSError * __autoreleasing *)error;
 - (nullable NSError *)deleteRecipes;
 - (nullable NSError *)createRecipes:(NSArray<RecipeModel *> *) recipes;
 @end

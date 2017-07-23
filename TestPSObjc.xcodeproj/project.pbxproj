@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		782038431F23A386000C55C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 782038421F23A386000C55C5 /* main.m */; };
 		782038461F23A386000C55C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 782038451F23A386000C55C5 /* AppDelegate.m */; };
-		782038491F23A386000C55C5 /* ReceipesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 782038481F23A386000C55C5 /* ReceipesList.m */; };
+		782038491F23A386000C55C5 /* RecipesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 782038481F23A386000C55C5 /* RecipesList.m */; };
 		7820384C1F23A386000C55C5 /* ReceipesList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7820384A1F23A386000C55C5 /* ReceipesList.storyboard */; };
 		7820384E1F23A386000C55C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7820384D1F23A386000C55C5 /* Assets.xcassets */; };
 		782038511F23A386000C55C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7820384F1F23A386000C55C5 /* LaunchScreen.storyboard */; };
@@ -30,8 +30,8 @@
 		782038421F23A386000C55C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		782038441F23A386000C55C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		782038451F23A386000C55C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		782038471F23A386000C55C5 /* ReceipesList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceipesList.h; sourceTree = "<group>"; };
-		782038481F23A386000C55C5 /* ReceipesList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceipesList.m; sourceTree = "<group>"; };
+		782038471F23A386000C55C5 /* RecipesList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipesList.h; sourceTree = "<group>"; };
+		782038481F23A386000C55C5 /* RecipesList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipesList.m; sourceTree = "<group>"; };
 		7820384B1F23A386000C55C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ReceipesList.storyboard; sourceTree = "<group>"; };
 		7820384D1F23A386000C55C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		782038501F23A386000C55C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				7820386D1F23D274000C55C5 /* Server */,
 				7820386C1F23D26E000C55C5 /* Database */,
 				7820385A1F23A98D000C55C5 /* Global */,
-				782038581F23A5F1000C55C5 /* ReceipesList */,
+				782038581F23A5F1000C55C5 /* RecipesList */,
 				782038411F23A386000C55C5 /* Supporting Files */,
 			);
 			path = TestPSObjc;
@@ -114,15 +114,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		782038581F23A5F1000C55C5 /* ReceipesList */ = {
+		782038581F23A5F1000C55C5 /* RecipesList */ = {
 			isa = PBXGroup;
 			children = (
 				7820384A1F23A386000C55C5 /* ReceipesList.storyboard */,
-				782038471F23A386000C55C5 /* ReceipesList.h */,
-				782038481F23A386000C55C5 /* ReceipesList.m */,
+				782038471F23A386000C55C5 /* RecipesList.h */,
+				782038481F23A386000C55C5 /* RecipesList.m */,
 				782038651F23B9AD000C55C5 /* Cell */,
 			);
-			name = ReceipesList;
+			name = RecipesList;
 			sourceTree = "<group>";
 		};
 		7820385A1F23A98D000C55C5 /* Global */ = {
@@ -318,7 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				782038701F23D376000C55C5 /* Storyboards.m in Sources */,
-				782038491F23A386000C55C5 /* ReceipesList.m in Sources */,
+				782038491F23A386000C55C5 /* RecipesList.m in Sources */,
 				782038731F23D709000C55C5 /* Database.m in Sources */,
 				782038461F23A386000C55C5 /* AppDelegate.m in Sources */,
 				782038431F23A386000C55C5 /* main.m in Sources */,
@@ -446,12 +446,24 @@
 			baseConfigurationReference = 8BA1D67A1880D8BED942017B /* Pods-TestPSObjc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestPSObjc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.ps.TestPSObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WARNING_CFLAGS = (
+					"-Wimplicit-retain-self",
+					"-Wnewline-eof",
+					"-Wsign-compare",
+					"-Wundef",
+					"-Wall",
+					"-Wdeprecated-implementations",
+					"-Wfloat-equal",
+				);
 			};
 			name = Debug;
 		};
@@ -460,12 +472,24 @@
 			baseConfigurationReference = C198064CE048FE73F3625859 /* Pods-TestPSObjc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestPSObjc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.ps.TestPSObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WARNING_CFLAGS = (
+					"-Wimplicit-retain-self",
+					"-Wnewline-eof",
+					"-Wsign-compare",
+					"-Wundef",
+					"-Wall",
+					"-Wdeprecated-implementations",
+					"-Wfloat-equal",
+				);
 			};
 			name = Release;
 		};

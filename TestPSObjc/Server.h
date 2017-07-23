@@ -12,10 +12,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^ServerRecipeModelsArrayCompletion)(NSArray<RecipeModel *> *);
+
 @interface Server : NSObject
 - (instancetype)initWithDelegate:(id<ServerDelegate>)delegate;
-- (void)searchText:(void (^)(NSArray<RecipeModel *> *))completion;
-- (void)searchText:(NSString *)text completion:(void (^)(NSArray<RecipeModel *> *))completion;
+- (void)searchText:(ServerRecipeModelsArrayCompletion)completion;
+- (void)searchText:(NSString *)text completion:(ServerRecipeModelsArrayCompletion)completion;
 @end
 
 NS_ASSUME_NONNULL_END

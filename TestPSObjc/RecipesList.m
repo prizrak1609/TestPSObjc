@@ -1,12 +1,12 @@
 //
-//  ViewController.m
+//  RecipesList.m
 //  TestPSObjc
 //
 //  Created by Dima Gubatenko on 22.07.17.
 //  Copyright © 2017 Dima Gubatenko. All rights reserved.
 //
 
-#import "ReceipesList.h"
+#import "RecipesList.h"
 #import "RecipeModel.h"
 #import "RecipeCell.h"
 #import "Utils.h"
@@ -15,15 +15,18 @@
 
 static NSString *const kCellReuseIdentifier = @"RecipeCell";
 
-@interface ReceipesList ()
+@interface RecipesList ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
-@implementation ReceipesList {
-    NSArray<RecipeModel *> *models;
-    Server *server;
+@implementation RecipesList {
+    NSArray<RecipeModel *> *_models;
+    Server *_server;
 }
+
+@synthesize searchBar = _searchBar;
+@synthesize tableView = _tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,11 +39,11 @@ static NSString *const kCellReuseIdentifier = @"RecipeCell";
 #pragma mark init search bar
     _searchBar.delegate = self;
 #pragma mark init server
-    server = [[Server alloc] initWithDelegate:self];
+    _server = [[Server alloc] initWithDelegate:self];
     __weak typeof(self) const weakSelf = self;
-    [server searchText:^(NSArray<RecipeModel *> *_models) {
+    [_server searchText:^(NSArray<RecipeModel *> *models) {
         __strong typeof(self) const strongSelf = weakSelf;
-        models = _models;
+        strongSelf->_models = models;
         [strongSelf.tableView reloadData];
     }];
 }
@@ -48,20 +51,20 @@ static NSString *const kCellReuseIdentifier = @"RecipeCell";
 # pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return models.count;
+    return _models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RecipeCell *const cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
-    cell.model = models[indexPath.row];
+    [cell setRecipeModel:_models[indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    RecipeModel *const model = models[indexPath.row];
+    RecipeModel *const model = _models[(NSUInteger)indexPath.row];
     NSURL *const url = [NSURL URLWithString:model.siteURLPath];
-    if(url && [[UIApplication sharedApplication] canOpenURL:url]) {
+    if(url && [UIApplication.sharedApplication canOpenURL:url]) {
         SFSafariViewController *const controller = [[SFSafariViewController alloc] initWithURL:url];
         [self presentViewController:controller animated:YES completion:nil];
     } else {
@@ -84,9 +87,9 @@ static NSString *const kCellReuseIdentifier = @"RecipeCell";
 
 - (void) searchText:(NSString *)text {
     __weak typeof(self) const weakSelf = self;
-    [server searchText:text completion:^(NSArray<RecipeModel *> *_models) {
+    [_server searchText:text completion:^(NSArray<RecipeModel *> *models) {
         __strong typeof(self) const strongSelf = weakSelf;
-        models = _models;
+        strongSelf->_models = models;
         [strongSelf.tableView reloadData];
     }];
 }

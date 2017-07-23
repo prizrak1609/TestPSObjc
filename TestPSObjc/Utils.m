@@ -19,7 +19,7 @@
     [self showText:text time:time onTap:nil];
 }
 
-+ (void)showText:(NSString *)text time:(NSTimeInterval)time onTap:(nullable void (^)())tap {
++ (void)showText:(NSString *)text time:(NSTimeInterval)time onTap:(nullable ShowTextOnTapCompletion)tap {
     NSDictionary<NSString *, id> *const options = @{kCRToastTextKey : text,
                                               kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
                                               kCRToastBackgroundColorKey : UIColor.whiteColor,
